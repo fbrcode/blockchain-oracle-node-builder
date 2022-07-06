@@ -2,7 +2,18 @@
   "name": "oracle-node-builder",
   "description": "Automatically deploys a new oracle node based in the use-case specification",
   "version": "1.0.0",
-  "main": "index.js",
   "author": "Fabio Bressler <fabio.bressler@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node src/api3-last-release.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.3",
+    "@types/node-fetch": "^2.6.2",
+    "ts-node": "^10.8.2",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "node-fetch": "2.6.6"
+  }
 }
