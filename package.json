@@ -1,0 +1,8 @@
+{
+  "name": "oracle-node-builder",
+  "description": "Automatically deploys a new oracle node based in the use-case specification",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Fabio Bressler <fabio.bressler@gmail.com>",
+  "license": "MIT"
+}
