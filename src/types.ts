@@ -39,14 +39,15 @@ export type GithubLatestRelease = {
   mentions_count: number;
 };
 
-export type AirnodeReleaseTag = {
+export type AirnodeLastRelease = {
   tag: string;
   url: string;
-  created_at: Date;
+  created_at: string;
 };
 
 export type AirnodeClone = {
   git_owner: string;
   git_repo: string;
   url_clone: string;
+  node_engine: string;
 };
