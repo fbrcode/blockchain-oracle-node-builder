@@ -38,3 +38,7 @@ export type GithubLatestRelease = {
   body: string;
   mentions_count: number;
 };
+
+export type API3ReleaseTag = {
+  tag: string;
+};
