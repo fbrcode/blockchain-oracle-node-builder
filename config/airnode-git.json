@@ -1,5 +1,6 @@
 {
   "git_owner": "api3dao",
   "git_repo": "airnode",
-  "url_clone": "git@github.com:api3dao/airnode.git"
+  "url_clone": "git@github.com:api3dao/airnode.git",
+  "node_engine": "v14.19.3"
 }
