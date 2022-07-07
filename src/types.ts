@@ -44,3 +44,9 @@ export type AirnodeReleaseTag = {
   url: string;
   created_at: Date;
 };
+
+export type AirnodeClone = {
+  git_owner: string;
+  git_repo: string;
+  url_clone: string;
+};
