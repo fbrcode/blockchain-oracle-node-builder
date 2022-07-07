@@ -39,6 +39,8 @@ export type GithubLatestRelease = {
   mentions_count: number;
 };
 
-export type API3ReleaseTag = {
+export type AirnodeReleaseTag = {
   tag: string;
+  url: string;
+  created_at: Date;
 };
