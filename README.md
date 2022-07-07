@@ -22,6 +22,10 @@ The workflow will be a fork and test of the latest API3 implementation with a us
 4. Validate/test scripts generation
 5. TBD...
 
+## Requirements
+
+- [**_Node Version Manager (nvm)_**](https://github.com/nvm-sh/nvm) needs to be installed to manage different project [Node.js](https://nodejs.org) versions.
+
 ## Scripts
 
 List if scripts ready for use:
