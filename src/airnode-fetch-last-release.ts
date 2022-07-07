@@ -9,35 +9,40 @@ const main = async () => {
   const airnodeLastRelease: AirnodeLastRelease = gitAirnodeLastRelease;
   const airnodeLastReleaseTag = airnodeLastRelease.tag;
   const airnodeFolderRelease = `airnode-${airnodeLastReleaseTag}`;
-  const path = 'fetches/';
+  const fetchPath = 'fetches/';
 
-  if (!fs.existsSync(path + airnodeFolderRelease)) {
+  // clone airnode latest release
+  if (!fs.existsSync(fetchPath + airnodeFolderRelease)) {
     const cloneCmd = `git clone --depth 1 --branch ${airnodeLastReleaseTag} ${airnodeClone.url_clone} ${airnodeFolderRelease}`;
     console.log(
-      `Fetching airnode release ${airnodeLastReleaseTag} into ${path}${airnodeFolderRelease}`
+      `Fetching airnode release ${airnodeLastReleaseTag} into ${fetchPath}${airnodeFolderRelease}`
     );
-    console.log(`Executing ${cloneCmd}`);
-    shell.cd(path);
-    shell.exec(cloneCmd);
+    console.log(`Executing: ${cloneCmd}`);
+    shell.cd(fetchPath);
+    shell.exec(cloneCmd, { silent: true });
     shell.cd(airnodeFolderRelease);
   } else {
     console.log(
-      `Already fetched airnode release ${airnodeLastReleaseTag} into ${path}${airnodeFolderRelease}`
+      `Already fetched airnode release ${airnodeLastReleaseTag} into ${fetchPath}${airnodeFolderRelease}`
     );
-    shell.cd(path + airnodeFolderRelease);
+    shell.cd(fetchPath + airnodeFolderRelease);
   }
 
-  // setup proper node version for airnode build
-  const nodeEngine = gitAirnode.node_engine;
-  console.log(`Checking up Node.js version`);
-
   // check if node version is matching
+  const nodeEngine = gitAirnode.node_engine;
   const currentNodeVersion = shell.exec(`node --version`, { silent: true });
   if (currentNodeVersion.stdout.includes(nodeEngine)) {
     console.log(`Node.js version is matching ${nodeEngine}`);
+    // build airnode packages
     console.log(`Building airnode ${airnodeLastReleaseTag}`);
-    shell.exec('yarn run bootstrap');
-    shell.exec('yarn run build');
+    fs.writeFileSync(
+      `../lerna-bootstrap-${airnodeFolderRelease}.log`,
+      shell.exec('yarn run bootstrap', { silent: true }).stdout
+    );
+    fs.writeFileSync(
+      `../lerna-build-${airnodeFolderRelease}.log`,
+      shell.exec('yarn run build', { silent: true }).stdout
+    );
   } else {
     console.log(
       `Node.js version should be ${nodeEngine}. It's using ${currentNodeVersion.stdout.trim()} instead.`
