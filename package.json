@@ -5,7 +5,6 @@
   "author": "Fabio Bressler <fabio.bressler@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "airnode-save-last-release": "ts-node src/airnode-save-last-release.ts",
     "airnode-fetch-last-release": "ts-node src/airnode-fetch-last-release.ts"
   },
   "devDependencies": {
