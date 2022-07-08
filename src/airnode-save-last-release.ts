@@ -1,25 +1,27 @@
 import fetch from 'node-fetch';
 import fs from 'fs';
-import { GithubLatestRelease } from './types';
+import { GithubLatestRelease, AirnodeLatestRelease } from './types';
 
-const main = async () => {
-  const filePath = 'config/airnode-last-release-tag.json';
-  const url = 'https://api.github.com/repos/api3dao/airnode/releases/latest';
-  const response = await fetch(url);
-  const api3LastRelease: GithubLatestRelease = await response.json();
-  console.log(`Latest airnode release: ${api3LastRelease.tag_name}`);
-  fs.writeFileSync(
-    filePath,
-    JSON.stringify(
-      {
-        tag: api3LastRelease.tag_name,
-        url: api3LastRelease.html_url,
-        created_at: api3LastRelease.created_at,
-      },
-      null,
-      2
-    )
-  );
-};
+export const fetchLatestAirnodeRelease =
+  async (): Promise<AirnodeLatestRelease> => {
+    const filePath = 'config/airnode-last-release-tag.json';
+    const url = 'https://api.github.com/repos/api3dao/airnode/releases/latest';
+    const response = await fetch(url);
+    const ghLatestRelease: GithubLatestRelease = await response.json();
+    const airnodeLatestRelease: AirnodeLatestRelease = {
+      tag: ghLatestRelease.tag_name,
+      url: ghLatestRelease.html_url,
+      created_at: ghLatestRelease.created_at.toString(),
+    };
+    console.log(`Latest airnode release: ${airnodeLatestRelease.tag}`);
+    fs.writeFileSync(filePath, JSON.stringify(airnodeLatestRelease, null, 2));
+    return airnodeLatestRelease;
+  };
 
-main();
+// fetchLatestAirnodeRelease()
+//   .then(() => {
+//     console.log('Done fetching airnode last release ' + '\u2705');
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
