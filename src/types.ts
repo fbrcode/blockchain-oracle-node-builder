@@ -39,7 +39,7 @@ export type GithubLatestRelease = {
   mentions_count: number;
 };
 
-export type AirnodeLastRelease = {
+export type AirnodeLatestRelease = {
   tag: string;
   url: string;
   created_at: string;
