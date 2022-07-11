@@ -5,6 +5,7 @@
   "author": "Fabio Bressler <fabio.bressler@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "init-api": "ts-node ./src/init-api.ts",
     "airnode-fetch-last-release": "ts-node src/airnode-fetch-last-release.ts"
   },
   "devDependencies": {
@@ -15,6 +16,7 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
+    "fastify": "^4.2.0",
     "node-fetch": "2.6.6",
     "shelljs": "^0.8.5"
   }
