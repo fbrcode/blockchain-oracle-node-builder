@@ -9,6 +9,7 @@
     "commitish",
     "fastify",
     "Blockportal",
-    "solhint"
+    "solhint",
+    "nomiclabs"
   ]
 }
