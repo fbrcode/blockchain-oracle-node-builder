@@ -6,6 +6,9 @@
     "tsbuildinfo",
     "codepaths",
     "zipball",
-    "commitish"
+    "commitish",
+    "fastify",
+    "Blockportal",
+    "solhint"
   ]
 }
