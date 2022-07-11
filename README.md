@@ -30,4 +30,6 @@ The workflow will be a fork and test of the latest API3 implementation with a us
 
 List if scripts ready for use:
 
-- `yarn dev` - get the latest release available from API3 airnode.
+- (1) `yarn airnode-fetch-last-release` - get the latest release available from API3 airnode and build all objects to be ready to use.
+- (2) `yarn init-api` - initiate local API endpoint with mocked sample data.
+- (3) `yarn eth-node` - initiate local blockchain node (by hardhat) **_[need refactor for non-fixed directory]_**

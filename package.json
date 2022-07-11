@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "init-api": "ts-node ./src/init-api.ts",
-    "airnode-fetch-last-release": "ts-node src/airnode-fetch-last-release.ts"
+    "airnode-fetch-last-release": "ts-node src/airnode-fetch-last-release.ts",
+    "eth-node": "cd ./fetches/airnode-v0.7.2/packages/airnode-examples && yarn hardhat node"
   },
   "devDependencies": {
     "@types/node": "^18.0.3",
