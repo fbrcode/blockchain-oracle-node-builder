@@ -51,3 +51,18 @@ export type AirnodeClone = {
   url_clone: string;
   node_engine: string;
 };
+
+type IntegrationAirnodeType = 'local' | 'live';
+type IntegrationNetwork = 'localhost' | 'hardhat';
+
+export type IntegrationConfig = {
+  integration: string;
+  airnodeType: IntegrationAirnodeType;
+  network: IntegrationNetwork;
+  mnemonic: string;
+  providerUrl: string;
+};
+
+export type IntegrationGroup = {
+  apiConfigData: [IntegrationConfig];
+};
