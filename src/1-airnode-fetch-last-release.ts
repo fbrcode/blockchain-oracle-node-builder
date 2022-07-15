@@ -1,6 +1,6 @@
 import shell from 'shelljs';
 import { AirnodeClone } from './types';
-import { fetchLatestAirnodeRelease } from './airnode-save-last-release';
+import { fetchLatestAirnodeRelease } from './1a-airnode-save-last-release';
 import * as gitAirnode from '../config/airnode-git.json';
 import fs from 'fs';
 

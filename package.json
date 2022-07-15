@@ -5,10 +5,10 @@
   "author": "Fabio Bressler <fabio.bressler@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "init-api": "ts-node ./src/init-api.ts",
-    "airnode-fetch-last-release": "ts-node src/airnode-fetch-last-release.ts",
-    "eth-node": "cd ./fetches/airnode-v0.7.2/packages/airnode-examples && yarn hardhat node",
-    "load-config": "ts-node ./src/load-config.ts"
+    "1-airnode-fetch-last-release": "ts-node src/1-airnode-fetch-last-release.ts",
+    "2-init-api": "ts-node ./src/2-init-api.ts",
+    "3-eth-node": "cd ./fetches/airnode-v0.7.2/packages/airnode-examples && yarn hardhat node",
+    "4a-load-config": "ts-node ./src/4a-load-config.ts"
   },
   "devDependencies": {
     "@types/node": "^18.0.3",

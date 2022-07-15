@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { integrationItem } from '../config/config-helper';
-import { fetchLatestAirnodeRelease } from './airnode-save-last-release';
+import { fetchLatestAirnodeRelease } from './1a-airnode-save-last-release';
 
 export const loadIntegrationConfig = async (): Promise<boolean> => {
   const airnodeLastRelease = await fetchLatestAirnodeRelease();
