@@ -6,33 +6,30 @@ import fs from 'fs';
 
 const main = async () => {
   const airnodeClone: AirnodeClone = gitAirnode;
-  const airnodeLastRelease = await fetchLatestAirnodeRelease();
-  const airnodeLastReleaseTag = airnodeLastRelease.tag;
-  const airnodeFolderRelease = `airnode-${airnodeLastReleaseTag}`;
-  const fetchPath = 'fetches/';
+  const airnodeLastReleaseTag = (await fetchLatestAirnodeRelease()).tag;
+  const airnodeFolderRelease = `${airnodeClone.oracleNodePrefix}${airnodeLastReleaseTag}`;
 
   // clone airnode latest release
-  if (!fs.existsSync(fetchPath + airnodeFolderRelease)) {
-    const cloneCmd = `git clone --depth 1 --branch ${airnodeLastReleaseTag} ${airnodeClone.url_clone} ${airnodeFolderRelease}`;
+  if (!fs.existsSync(`${airnodeClone.fetchPath}/${airnodeFolderRelease}`)) {
+    const cloneCmd = `git clone --depth 1 --branch ${airnodeLastReleaseTag} ${airnodeClone.urlClone} ${airnodeFolderRelease}`;
     console.log(
-      `Fetching airnode release ${airnodeLastReleaseTag} into ${fetchPath}${airnodeFolderRelease}`
+      `Fetching airnode release ${airnodeLastReleaseTag} into ${airnodeClone.fetchPath}/${airnodeFolderRelease}`
     );
     console.log(`Executing: ${cloneCmd}`);
-    shell.cd(fetchPath);
+    shell.cd(airnodeClone.fetchPath);
     shell.exec(cloneCmd, { silent: true });
     shell.cd(airnodeFolderRelease);
   } else {
     console.log(
-      `Already fetched airnode release ${airnodeLastReleaseTag} into ${fetchPath}${airnodeFolderRelease}`
+      `Already fetched airnode release ${airnodeLastReleaseTag} into ${airnodeClone.fetchPath}/${airnodeFolderRelease}`
     );
-    shell.cd(fetchPath + airnodeFolderRelease);
+    shell.cd(`${airnodeClone.fetchPath}/${airnodeFolderRelease}`);
   }
 
   // check if node version is matching
-  const nodeEngine = gitAirnode.node_engine;
   const currentNodeVersion = shell.exec(`node --version`, { silent: true });
-  if (currentNodeVersion.stdout.includes(`v${nodeEngine}`)) {
-    console.log(`Node.js version is matching ${nodeEngine}`);
+  if (currentNodeVersion.stdout.includes(`v${gitAirnode.nodeEngine}`)) {
+    console.log(`Node.js version is matching ${gitAirnode.nodeEngine}`);
     // build airnode packages
     const bootstrapLog = `../lerna-bootstrap-${airnodeFolderRelease}.log`;
     const buildLog = `../lerna-build-${airnodeFolderRelease}.log`;
@@ -75,17 +72,19 @@ const main = async () => {
     }
   } else {
     console.log(
-      `Node.js version should be ${nodeEngine}. It's using ${currentNodeVersion.stdout.trim()} instead.`
+      `Node.js version should be ${
+        gitAirnode.nodeEngine
+      }. It's using ${currentNodeVersion.stdout.trim()} instead.`
     );
     console.log(
-      `Run "nvm install ${nodeEngine}" and then "nvm use ${nodeEngine}" to install and use the correct version`
+      `Run "nvm install ${gitAirnode.nodeEngine}" and then "nvm use ${gitAirnode.nodeEngine}" to install and use the correct version`
     );
   }
 };
 
 main()
   .then(() => {
-    console.log('Done building airnode latest release ' + '\u2705');
+    console.log('Done building airnode latest release ✅');
   })
   .catch((err) => {
     console.error(err);
