@@ -8,7 +8,8 @@
     "1-airnode-fetch-last-release": "ts-node src/1-airnode-fetch-last-release.ts",
     "2-init-api": "ts-node ./src/2-init-api.ts",
     "3-eth-node": "cd ./fetches/airnode-v0.7.2/packages/airnode-examples && yarn hardhat node",
-    "4a-load-config": "ts-node ./src/4a-load-config.ts"
+    "4a-load-config": "ts-node ./src/4a-load-config.ts",
+    "4b-deploy-rr-protocol": "cd ./fetches/airnode-v0.7.2/packages/airnode-examples && yarn deploy-rrp"
   },
   "devDependencies": {
     "@types/node": "^18.0.3",
