@@ -1,6 +1,10 @@
 {
-  "git_owner": "api3dao",
-  "git_repo": "airnode",
-  "url_clone": "git@github.com:api3dao/airnode.git",
-  "node_engine": "14.19.3"
+  "gitOwner": "api3dao",
+  "gitRepo": "airnode",
+  "urlClone": "git@github.com:api3dao/airnode.git",
+  "nodeEngine": "14.19.3",
+  "fetchPath": "fetches",
+  "oracleNodePrefix": "airnode-",
+  "examplesPath": "packages/airnode-examples",
+  "integrationConfigFile": "integration-info.json"
 }
