@@ -1,5 +1,7 @@
 import { IntegrationGroup, IntegrationConfig } from '../src/types';
 
+export const deploymentPath = './deployment';
+
 export const integrationList: IntegrationGroup = {
   apiConfigData: [
     {
