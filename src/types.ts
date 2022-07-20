@@ -46,10 +46,14 @@ export type AirnodeLatestRelease = {
 };
 
 export type AirnodeClone = {
-  git_owner: string;
-  git_repo: string;
-  url_clone: string;
-  node_engine: string;
+  gitOwner: string;
+  gitRepo: string;
+  urlClone: string;
+  nodeEngine: string;
+  fetchPath: string;
+  oracleNodePrefix: string;
+  examplesPath: string;
+  integrationConfigFile: string;
 };
 
 type IntegrationAirnodeType = 'local' | 'live';
