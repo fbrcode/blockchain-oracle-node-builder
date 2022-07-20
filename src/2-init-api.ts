@@ -8,7 +8,7 @@ server.get(endpoint, async (request, reply) => {
   return jsonData;
 });
 
-server.listen({ port: 8080 }, (err, address) => {
+server.listen({ port: 8888 }, (err, address) => {
   if (err) {
     console.error(err);
     process.exit(1);
