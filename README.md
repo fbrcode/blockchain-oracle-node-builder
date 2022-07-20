@@ -35,3 +35,4 @@ List if scripts ready for use:
 - (3) `yarn 3-eth-node` - initiate local blockchain node (by hardhat) **_[need refactor for non-fixed directory]_**
 - (4) **Merge steps** :: the following steps will be merged in a single execution to run the whole process.
 - (4a) `yarn 4a-load-config` - load initial airnode base setup for local execution.
+- (4b) `yarn 4b-deploy-rr-protocol` - deploy the request/response contract protocol.
